@@ -144,7 +144,6 @@ export default function Approval() {
         );
     };
     const handleSimulate = () => {
-        setIsSimulating(true);
         const errors = validateWorkflow(nodes, edges);
 
         setNodes(nds =>
@@ -158,10 +157,12 @@ export default function Approval() {
         );
 
         if (Object.keys(errors).length > 0) {
+
             alert(`Workflow has errors! ${JSON.stringify(errors)}`);
             return;
         }
 
+        setIsSimulating(true);
         simulateWorkflow({ nodes, edges }, setToast, setSimulation, setIsSimulating);
     };
 

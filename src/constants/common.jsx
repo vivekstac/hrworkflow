@@ -9,7 +9,7 @@ export const LEAVE_APPROVAL_NODE = [
                 category: "",
             },
             errors: []
-        },
+        }
     },
 
     {
@@ -21,8 +21,8 @@ export const LEAVE_APPROVAL_NODE = [
             description: "",
             assignee: "",
             due_date: "",
-        },
-        errors: []
+            errors: []
+        }
     },
 
     {
@@ -30,19 +30,20 @@ export const LEAVE_APPROVAL_NODE = [
         type: "approvalNode",
         position: { x: 250, y: 240 },
         data: {
-            title: "Manager Approval",
-            approver_role: "Manager",
-            auto_approve_threshold: 2,
-            notes: "Auto-approve if documents are verified"
+            title: "",
+            approver_role: "",
+            auto_approve_threshold: 1,
+            notes: "",
+            errors: []
         },
-        errors: []
     },
     {
         id: "4",
         type: "automatedNode",
         position: { x: 100, y: 360 },
         data: {
-            title: "Notify HR",
+            title: "",
+            errors: []
         },
         action_data: [
             {
@@ -61,8 +62,7 @@ export const LEAVE_APPROVAL_NODE = [
                     message: "Manager approved the leave request."
                 }
             }
-        ],
-        errors: []
+        ]
     },
     {
         id: "5",
@@ -71,8 +71,8 @@ export const LEAVE_APPROVAL_NODE = [
         data: {
             end_message: "",
             summary: true,
+            errors: []
         },
-        errors: []
     }
 ];
 

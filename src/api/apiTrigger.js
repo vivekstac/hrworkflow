@@ -82,10 +82,10 @@ export async function simulateWorkflow(workflowJson, setToast, setSimulation, se
         setToast("success", "Simulation started!");
 
     } catch (err) {
+        setIsSimulating(false);
         setToast("error", err.message);
     } finally {
         setTimeout(() => {
-
             setIsSimulating(false);
         }, 5000);
     }
