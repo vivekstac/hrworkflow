@@ -1,0 +1,117 @@
+{
+  "workflowId": "HR-LEAVE-FLOW-001",
+  "workflowName": "Employee Leave Request Workflow",
+  "workflowDescription": "Standard HR Leave workflow including employee task, automatic validations, approvals, and notifications.",
+  "category": "HR Workflow",
+  "version": "1.0",
+  "nodes": [
+    {
+      "id": "start-1",
+      "type": "startNode",
+      "position": { "x": 250, "y": 0 },
+      "data": {
+        "title": "Start Leave Request",
+        "metadata": {
+          "category": "Leave",
+          "initiatedBy": "Employee"
+        }
+      }
+    },
+    {
+      "id": "task-employee-fill",
+      "type": "taskNode",
+      "position": { "x": 250, "y": 150 },
+      "data": {
+        "title": "Employee Submits Leave Form",
+        "description": "Employee selects leave type, date range and reason.",
+        "assignee": "Employee",
+        "dueDate": "",
+        "customFields": [
+          { "key": "leaveType", "value": "" },
+          { "key": "reason", "value": "" }
+        ]
+      }
+    },
+    {
+      "id": "auto-validate-balance",
+      "type": "automatedNode",
+      "position": { "x": 250, "y": 300 },
+      "data": {
+        "title": "Validate Leave Balance",
+        "action": "CHECK_BALANCE",
+        "actionParameters": {
+          "minBalanceRequired": 1
+        },
+        "description": "Checks if employee has enough leave balance."
+      }
+    },
+    {
+      "id": "approval-manager",
+      "type": "approvalNode",
+      "position": { "x": 250, "y": 450 },
+      "data": {
+        "title": "Manager Approval",
+        "approverRole": "Manager",
+        "autoApproveThreshold": 0,
+        "description": "Manager reviews and approves leave request."
+      }
+    },
+    {
+      "id": "approval-hr",
+      "type": "approvalNode",
+      "position": { "x": 250, "y": 600 },
+      "data": {
+        "title": "HR Verification",
+        "approverRole": "HR Team",
+        "autoApproveThreshold": 0,
+        "description": "HR verifies request as per company policy."
+      }
+    },
+    {
+      "id": "auto-update-systems",
+      "type": "automatedNode",
+      "position": { "x": 250, "y": 750 },
+      "data": {
+        "title": "Update Attendance System",
+        "action": "UPDATE_ATTENDANCE",
+        "actionParameters": {
+          "source": "LeaveRequest"
+        },
+        "description": "Attendance system is updated automatically."
+      }
+    },
+    {
+      "id": "auto-notify",
+      "type": "automatedNode",
+      "position": { "x": 250, "y": 900 },
+      "data": {
+        "title": "Send Notifications",
+        "action": "SEND_EMAIL",
+        "actionParameters": {
+          "recipients": ["Employee", "Manager"],
+          "template": "LEAVE_STATUS_UPDATE"
+        },
+        "description": "Sends confirmation emails to involved parties."
+      }
+    },
+    {
+      "id": "end-1",
+      "type": "endNode",
+      "position": { "x": 250, "y": 1050 },
+      "data": {
+        "title": "Leave Workflow Completed",
+        "summary": true,
+        "endMessage": "Leave request process successfully completed."
+      }
+    }
+  ],
+  "edges": [
+    { "id": "e1", "source": "start-1", "target": "task-employee-fill", "type": "smoothstep" },
+    { "id": "e2", "source": "task-employee-fill", "target": "auto-validate-balance", "type": "smoothstep" },
+    { "id": "e3", "source": "auto-validate-balance", "target": "approval-manager", "type": "smoothstep" },
+    { "id": "e4", "source": "approval-manager", "target": "approval-hr", "type": "smoothstep" },
+    { "id": "e5", "source": "approval-hr", "target": "auto-update-systems", "type": "smoothstep" },
+    { "id": "e6", "source": "auto-update-systems", "target": "auto-notify", "type": "smoothstep" },
+    { "id": "e7", "source": "auto-notify", "target": "end-1", "type": "smoothstep" }
+  ]
+}

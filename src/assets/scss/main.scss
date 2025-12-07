@@ -1,0 +1,417 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  //   background-color: rgba(0, 0, 0, 0.208);
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  flex-wrap: wrap;
+}
+
+.app-header {
+  width: 100vw;
+  height: 50px;
+  text-align: center;
+  background-color: #0b1220;
+  color: white;
+  border-bottom: 1px solid;
+
+  h3 {
+    margin: 0;
+    line-height: 50px;
+    font-weight: 500;
+  }
+}
+
+.flow-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 54px);
+  width: 80vw;
+}
+
+.sidebar {
+  width: 20vw;
+  background: #0b1220;
+  color: #fff;
+  padding: 12px;
+  box-sizing: border-box;
+
+  h4 {
+    margin: 0 0 20px 0;
+    text-align: center;
+  }
+
+  .hint {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 12px;
+  }
+
+  .sidebar-item {
+    background: #0f1724;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    cursor: grab;
+    user-select: none;
+    text-align: center;
+    border: 1px solid white;
+  }
+}
+
+.react-flow {
+  flex: 1;
+}
+
+.toolbar {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+
+  button {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: none;
+    background-color: black;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.node {
+  padding: 8px;
+  border-radius: 6px;
+  min-width: 140px;
+  box-shadow: 0 4px 10px rgba(2, 6, 23, 0.6);
+  background-color: white;
+}
+
+.node-header {
+  font-weight: 700;
+  margin-bottom: 6px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.node-body {
+  font-size: 12px;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-panel {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  backdrop-filter: blur(2px) brightness(0.7);
+}
+
+.modal {
+  background: white;
+  width: 350px;
+  padding: 20px;
+  margin: 100px auto;
+  border-radius: 8px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+textarea {
+  height: 80px;
+  resize: vertical;
+  width: 100%;
+}
+
+.kv-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  margin: 10px 0;
+
+  input {
+    margin-bottom: 0;
+  }
+}
+
+.remove-btn {
+  background-color: red;
+  width: 10px;
+  height: 10px;
+  font-size: 12px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.btn {
+  margin-right: 10px;
+}
+
+form {
+  border: 1px solid #e0e0e0;
+  padding: 16px;
+  border-radius: 8px;
+  max-width: 720px;
+  font-family: "Inter, Roboto, Arial, sans-serif";
+}
+
+.row {
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.check-box {
+  cursor: pointer;
+  input {
+    width: auto;
+    margin-right: 6px;
+    margin-bottom: 0;
+  }
+}
+
+.action-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+  gap: 8px;
+}
+
+.cancel-btn {
+  background-color: red;
+  color: white;
+  border: none !important;
+}
+
+.save-btn {
+  background-color: green;
+  color: white;
+  border: none !important;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.customList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.customRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.addBtn {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #2b7cff;
+  background: white;
+  cursor: pointer;
+}
+
+.removeBtn {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  cursor: pointer;
+  margin-left: 6px;
+}
+
+.saveBtn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  background: #2b7cff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.cancelBtn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.error-text {
+  position: relative;
+  color: crimson;
+  font-size: 10px;
+  top: -8px;
+}
+
+.required {
+  color: red;
+}
+
+.input-error {
+  border: 1px solid crimson !important;
+}
+
+.muted {
+  color: #666;
+  font-size: 13px;
+}
+
+.empty-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 18px;
+  color: #666;
+}
+
+.selected-node {
+  background-color: #e0f0ff;
+  border: 2px solid #2b7cff;
+
+  .node-header {
+    color: #2b7cff;
+  }
+}
+
+.import_export_input {
+  width: max-content;
+  text-align: center;
+  width: max-content;
+  text-align: center;
+  background: #0b1220;
+  color: wheat;
+  margin: auto;
+}
+
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  pointer-events: none;
+  background: transparent;
+}
+
+.toast {
+  background: #333;
+  color: white;
+  padding: 14px 18px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  min-width: 200px;
+  max-width: 280px;
+  font-size: 14px;
+  opacity: 0;
+  transform: translateX(100%);
+  pointer-events: all;
+  animation: slideIn 1s ease forwards;
+
+  &.success {
+    background: #28a745;
+  }
+
+  &.error {
+    background: #dc3545;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(-40%);
+  }
+}
+
+.simulation-box {
+  padding: 12px;
+  background: #f7f7f7;
+  border: 1px solid #ddd;
+  width: 260px;
+  border-radius: 6px;
+  ul {
+    padding-left: 0;
+    margin-top: 10px;
+    li {
+      list-style: none;
+      padding: 6px 10px;
+      margin-bottom: 4px;
+      border-radius: 4px;
+      background: #eee;
+      opacity: 0.4;
+      transition: 0.3s;
+    }
+  }
+  .active-step {
+    background: #cdefff;
+    border-left: 4px solid #0094ff;
+    opacity: 1;
+  }
+}
